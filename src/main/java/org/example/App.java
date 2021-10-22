@@ -1,7 +1,9 @@
 package org.example;
 
+
+
 import java.time.*;
-import java.time.chrono.ChronoLocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,10 +18,7 @@ public class App
     public static void main( String[] args )
     {
 
-
-
-
-
+        exercise3();
 
     }
                 // Exercises
@@ -40,7 +39,7 @@ public class App
 
     public static void exercise3(){
         LocalDate lastMon = LocalDate.of(2021,10,18);
-        while(true) {
+        while (true) {
             if (lastMon.isBefore(LocalDate.of(2021, 10, 24))) {
                 System.out.println(LocalDate.of(2021, 10, 18));
                 System.out.println(LocalDate.of(2021, 10, 19));
@@ -65,13 +64,68 @@ public class App
         System.out.println(day);
     }
 
+    public static void exercise6() {
+        LocalDate current = LocalDate.now();
+
+        LocalDate newDate = current.minusYears(10)
+                .minusMonths(10);
+
+        Month month = newDate.getMonth();
+
+        int month1 = newDate.getMonthValue();
+
+        System.out.println(month);
+        System.out.println(month1);
+    }
+
+    public static void exercise7(){
+
+        LocalDate then = LocalDate.of(1945,5,8);
+        LocalDate myBirthDay = LocalDate.of(1994,4,22);
+
+        Period period = Period.between(then, myBirthDay);
+        int years = period.getYears();
+        int months = period.getMonths();
+        int days = period.getDays();
+
+        System.out.println(years + " years, "+ months+ " months, " + days +" days.");
+
+    }
+
+    public static void exercise8(){
+
+       Period period = Period.ofYears(4).plusMonths(7).plusDays(29);
+
+       LocalDate current = LocalDate.now();
+       LocalDate nowPlusPeriod = current.plus(period);
+
+        System.out.println(nowPlusPeriod);
+
+
+    }
+
+    public static void exercise9() {
+        LocalTime time = LocalTime.now();
+
+        System.out.println(time);
+    }
+
+    public static void exercise10(){
+        LocalTime time = LocalTime.now();
+
+        int b = time.getNano();
+
+        System.out.println(b);
+        System.out.println(time.getNano());
+
+    }
 
 
     public static int getAgeFromBirthdate(LocalDate birthDate){
        Period period = Period.between(birthDate, LocalDate.now());
        return period.getYears();
    }
-    public static List<LocalDateTime> findDateTimeBetween(LocalTime start,LocalTime end, List<LocalDateTime> dateTimeList){
+    public static List<LocalDateTime> findDateTimeBetween(java.time.LocalTime start, java.time.LocalTime end, List<LocalDateTime> dateTimeList){
         List<LocalDateTime> result = new ArrayList<>();
         for(LocalDateTime dateTime : dateTimeList){
             LocalTime time = dateTime.toLocalTime();
