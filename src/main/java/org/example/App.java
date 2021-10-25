@@ -2,9 +2,11 @@ package org.example;
 
 
 
+import java.text.Format;
 import java.time.*;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,13 +17,16 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
+
+
+    public static void main(String[] args )
     {
 
-        exercise3();
+
 
     }
-                // Exercises
+
+          // Exercises
 
     public static void exercise1(){
         LocalDate a = LocalDate.now();
@@ -119,6 +124,42 @@ public class App
         System.out.println(time.getNano());
 
     }
+
+    public static void exercise11(){
+        LocalTime time = LocalTime.parse("23:24:33");
+        System.out.println(time);
+    }
+
+    public static void exercise12(){
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        String format = formatter.format(time);
+        System.out.println(format);
+    }
+
+    public static void exercise13(){
+        LocalDateTime dateTime = LocalDateTime.parse("2018-04-05T10:00");
+        System.out.println(dateTime);
+    }
+
+    public static void exercise14(){
+        LocalDateTime dateTime = LocalDateTime.parse("2018-04-05T10:00");
+        String dateTimeFormat = dateTime.format(DateTimeFormatter.ofPattern("eeee d LLLL kk:mm"));
+
+        System.out.println(dateTimeFormat);
+    }
+
+    public static void exercise15(){
+        LocalTime time = LocalTime.parse("23:33:01");
+        LocalDate date = LocalDate.parse("2021-10-24");
+
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
+
+        System.out.println(dateTime);
+    }
+
+
 
 
     public static int getAgeFromBirthdate(LocalDate birthDate){
